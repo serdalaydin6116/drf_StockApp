@@ -35,5 +35,11 @@ class Product(UpdateCreate):
         return self.name
     
 
+class Firm(UpdateCreate):
+    name=models.CharField(max_length=25)
+    phone=models.CharField(max_length=15)
+    address=models.CharField(max_length=200)  ##textfield gereksiz uzun yer kaplar..
 
+    def __str__(self):
+        return self.name
 
