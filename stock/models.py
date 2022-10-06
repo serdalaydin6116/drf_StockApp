@@ -25,6 +25,14 @@ class Brand(models.Model):
         return self.name
 
 
+class Product(UpdateCreate):
+    name=models.CharField(max_length=100)
+    category=models.ForeignKey(Category, on_delete=models.CASCADE, related_name='c_products')
+    brand=models.ForeignKey(Brand, on_delete=models.CASCADE, related_name='b_products')
+    stock=models.SmallIntegerField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
     
 
 
