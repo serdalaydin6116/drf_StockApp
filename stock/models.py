@@ -43,3 +43,22 @@ class Firm(UpdateCreate):
     def __str__(self):
         return self.name
 
+
+class Transaction(UpdateCreate):
+    TRANSACTION=(
+        (1, 'IN'),
+        (0,'OUT'),
+
+    )
+
+    user=models.ForeignKey(User,on_delete=models.SET_NULL, null=True )
+    firm=models.ForeignKey(Firm, on_delete=SET_NULL, null=True, related_name='transactions')
+    transaction=models.SmallIntegerField(choices=TRANSACTION)
+    product=models.ForeignKey(Product,on_delete=models.CASCADE, related_name='transaction')
+    quantity=models.SmallIntegerField()
+    price=models.DecimalField(max_digit=6, decimal_places=2)
+    price_total=models.DecimalField(max_digit=8, decimal_places=2)
+
+    def __str__(self):
+        return f'{self.transaction} - {self.product} - {self.quantity}'
+
