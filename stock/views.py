@@ -12,7 +12,8 @@ from .serializers import (
     CategorySerializer,
     BrandSerializer,
     ProductSerializer,
-    FirmSerializer
+    FirmSerializer,
+    TransactionSerializer
 )
 
 
@@ -47,4 +48,10 @@ class FirmView(viewsets.ModelViewSet):
 
 class TransactionView(viewsets.ModelViewSet):
     queryset = Transaction.objects.all()
-    serializer_class = ''
+    serializer_class = TransactionSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_fields = ['firm', 'transaction', 'product']
+    search_fields = ['firm']
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
