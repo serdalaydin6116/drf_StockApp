@@ -1,4 +1,3 @@
-from xml.dom import ValidationErr
 from rest_framework import serializers
 from .models import (
     Category,
@@ -88,6 +87,6 @@ class TransactionSerializer(serializers.ModelSerializer):
             product = Product.objects.get(id=data.get('product_id'))
             if data.get('quantity') > product.stock:
                 raise serializers.ValidationError(
-                     f'Dont have enough stock. Current stock is {product.stock}'
+                    f'Dont have enough stock. Current stock is {product.stock}'
                 )
-        return data    
+        return data
