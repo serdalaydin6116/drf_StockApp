@@ -13,7 +13,8 @@ from .serializers import (
     BrandSerializer,
     ProductSerializer,
     FirmSerializer,
-    TransactionSerializer
+    TransactionSerializer,
+    # CategoryProductSerialier
 )
 
 
@@ -22,6 +23,12 @@ class CategoryView(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['name']
+
+    # def get_serializer_class(self):
+    #     if self.request.query_params.get('name'):
+    #         return CategoryProductSerializer
+    #     else:
+    #         return super().get_serializer_class()
 
 
 class BrandView(viewsets.ModelViewSet):
