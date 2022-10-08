@@ -104,5 +104,3 @@ class TransactionSerializer(serializers.ModelSerializer):
 
 
 
-# class CategoryProductSerializer(serializers.ModelSerializer):
-#     pass
