@@ -90,3 +90,8 @@ class TransactionSerializer(serializers.ModelSerializer):
                     f'Dont have enough stock. Current stock is {product.stock}'
                 )
         return data
+
+
+
+# class CategoryProductSerializer(serializers.ModelSerializer):
+#     pass
